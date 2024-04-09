@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <style>
+    #tooltip {
+        background: cornsilk;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+
+    /*<svg>
+    <rect width="100" height="50" style="fill: blue;" onmousemove="showTooltip(evt, 'This is blue');" onmouseout="hideTooltip();">
+    </rect>
+</svg>*/
+    </style>
+</head>
+
+<body>
+    <div id="tooltip" display="none" style="position: absolute; display: none;"></div>
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="1.12in" height="0.56in" viewBox="0 0 80.8 40.4">
+        <g name="CBD">
+            <rect x="0.13" y="0.12" width="40.15" height="40.15" style="fill: #fbb03b" onmousemove="showTooltip(evt, '<table><tr><td>foo</td><td>1</td></tr><tr><td>bar</td><td>2</td></tr></table>');" onmouseout="hideTooltip();"/>
+            </div>
+            <path d="M169.35,195.5v39.9h-39.9V195.5h39.9m.25-.25H129.2v40.4h40.4v-40.4Z" transform="translate(-129.2 -195.25)" />
+        </g>
+        <text transform="translate(12.3 22.66)" style="font-size: 8.5px;font-family: CubScout-Light, CubScout;font-weight: 300">CBD</text>
+        <g name="DOH">
+            <rect x="40.53" y="0.12" width="40.15" height="40.15" style="fill: #000"  onmousemove="showTooltip(evt, '<table><tr><td>foo</td><td>3</td></tr><tr><td>bar</td><td>4</td></tr></table>');" onmouseout="hideTooltip();"/>
+            <path d="M209.75,195.5v39.9h-39.9V195.5h39.9m.25-.25H169.6v40.4H210v-40.4Z" transform="translate(-129.2 -195.25)" />
+        </g>
+        <text transform="translate(52.55 22.66)" style="font-size: 8.5px;font-family: CubScout-Light, CubScout;font-weight: 300">DOH</text>
+    </svg>
+    <script>
+    function showTooltip(evt, text) {
+        let tooltip = document.getElementById("tooltip");
+        tooltip.innerHTML = text;
+        tooltip.style.display = "block";
+        tooltip.style.left = evt.pageX + 10 + 'px';
+        tooltip.style.top = evt.pageY + 10 + 'px';
+    }
+
+    function hideTooltip() {
+        var tooltip = document.getElementById("tooltip");
+        tooltip.style.display = "none";
+    }
+    </script>
+</body>
+
+</html>
