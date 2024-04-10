@@ -2,6 +2,9 @@
 
 <head>
     <style>
+    	svg {
+    		padding: 0 25px 0 25px;
+    	}
     #tooltip {
         background: #e1e1e1;
         border: 1px solid black;
@@ -16,24 +19,24 @@
     }
 
     th {
-    	text-align: left;
-    	border-bottom: 2px solid gray;
+        text-align: left;
+        border-bottom: 2px solid gray;
     }
 
     td {
-    	border-bottom: 1px solid gray;
-    	padding: 5px;
+        border-bottom: 1px solid gray;
+        padding: 5px;
     }
 
     .neighborhood-name {
-    	text-align: center;
-    	text-transform: uppercase;
-    	font-family: monospace;
-    	font-size: 1.1em;
-    	background: #000;
-    	color: #fff;
-    	padding: 5px;
-    	margin: -5px -5px 10px -5px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: monospace;
+        font-size: 1.1em;
+        background: #000;
+        color: #fff;
+        padding: 5px;
+        margin: -5px -5px 10px -5px;
     }
 
     /*<svg>
@@ -45,24 +48,28 @@
 */
     </style>
     <script>
-    var sloanLake = 'Sloan Lake,' + 'foo,' + 'bar,' + '21.3';
-    console.log(sloanLake);
-
     function showTooltip(evt, text) {
         let tooltip = document.getElementById("tooltip");
         tooltip.innerHTML = text;
         tooltip.style.display = "block";
-        tooltip.style.left = evt.pageX + 10 + 'px';
-        tooltip.style.top = evt.pageY + 10 + 'px';
+        tooltip.style.left = evt.pageX -90 + 'px';
+        tooltip.style.top = 45 + 'px';
+        // const bbox = svg1.getBBox()
+        // const centroid = [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2]
+        // tooltip.style.left = centroid[0];
+        // tooltip.style.top = centroid[1];
+        // var bBox = svg1.getBBox();
+        // console.log('XxY', bBox.x + 'x' + bBox.y);
+        // console.log('size', bBox.width + 'x' + bBox.height);
     }
 
     function hideTooltip() {
         var tooltip = document.getElementById("tooltip");
         tooltip.style.display = "none";
     }
-// <tr><td colspan="3" class="neighborhood-name">' + neighborhoodName + '</td></tr>
+    // <tr><td colspan="3" class="neighborhood-name">' + neighborhoodName + '</td></tr>
     function buildTable(neighborhoodName, rent2022, rent2017, rent2012, rent2009) {
-    	var change2022 = ((rent2022 - rent2009) / rent2009) * 100;
+        var change2022 = ((rent2022 - rent2009) / rent2009) * 100;
         return '<div class="neighborhood-name">' + neighborhoodName + '</div><table class="neighborhood-table"><tr><th></th><th>Median<br>rent</th><th>Change<br>from 2009</th></tr><tr><td><strong>2022</strong></td><td>' + '$' + Number(rent2022).toLocaleString() + '</td><td>' + Math.round(change2022) + '%</td></tr><tr><td><strong>2017</strong></td><td>' + '$' + Number(rent2017).toLocaleString() + '</td><td>change</td></tr><tr><td><strong>2012</strong></td><td>' + '$' + Number(rent2012).toLocaleString() + '</td><td>change</td></tr><tr><td><strong>2009</strong></td><td>' + '$' + Number(rent2009).toLocaleString() + '</td><td>change</td></tr></table>'
     }
     </script>
@@ -82,12 +89,14 @@
         </g>
         <text transform="translate(52.55 22.66)" style="font-size: 8.5px;font-family: CubScout-Light, CubScout;font-weight: 300">DOH</text>
     </svg> -->
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405 122.2">
+    <h3>A sweet hed here and here and here</h3>
+    <p>And some lovely text here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here and here.</p>
+    <svg id="svg1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 405 122.2">
         <rect id="Sloan_Lake" data-name="Sloan Lake" x="0.5" y="0.5" width="40.4" height="40.4" style="fill: #efb083;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #efb083;opacity:50%'; showTooltip(evt, buildTable('Sloan Lake', '1432','1362','1058','950'));" onmouseout="hideTooltip(); style='fill: #efb083;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'" />
         <rect id="West_Colfax" data-name="West Colfax" x="0.5" y="40.9" width="40.4" height="40.4" style="fill: #efb083;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #efb083;opacity:50%'; showTooltip(evt, buildTable('West Colfax','1546','930','972','967'));" onmouseout="hideTooltip(); style='fill: #efb083;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'" />
-        <rect id="Villa_Park" data-name="Villa Park" x="0.5" y="81.3" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #f5f5f6;opacity:50%'; showTooltip(evt, buildTable('Villa Park','1549','1224','1087','1077'));" onmouseout="hideTooltip(); style='fill: #f5f5f6;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'"/>
+        <rect id="Villa_Park" data-name="Villa Park" x="0.5" y="81.3" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #f5f5f6;opacity:50%'; showTooltip(evt, buildTable('Villa Park','1549','1224','1087','1077'));" onmouseout="hideTooltip(); style='fill: #f5f5f6;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'" />
         <rect id="Jefferson_Park" data-name="Jefferson Park" x="40.9" y="0.5" width="40.4" height="40.4" style="fill: #c2132a;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #c2132a;opacity:50%'; showTooltip(evt, buildTable('Jefferson Park','1582','1134','877','878'));" onmouseout="hideTooltip(); style='fill: #c2132a;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'" />
-        <rect id="Sun_Valley" data-name="Sun Valley" x="40.9" y="40.9" width="40.4" height="80.8" style="fill: #006197;stroke: #e1e1e1;stroke-miterlimit: 10"  onmousemove="style='fill: #006197;opacity:50%'; showTooltip(evt, buildTable('Sun Valley','272','291','242','297'));" onmouseout="hideTooltip(); style='fill: #006197;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'"/>
+        <rect id="Sun_Valley" data-name="Sun Valley" x="40.9" y="40.9" width="40.4" height="80.8" style="fill: #006197;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #006197;opacity:50%'; showTooltip(evt, buildTable('Sun Valley','272','291','242','297'));" onmouseout="hideTooltip(); style='fill: #006197;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'" />
         <rect id="Union_Station" data-name="Union Station" x="81.3" y="0.5" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" />
         <g id="Auraria">
             <rect x="81.42" y="41.02" width="40.15" height="40.15" style="fill: #999" />
@@ -111,7 +120,7 @@
         <rect id="Montclair" x="323.7" y="81.3" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" />
         <rect id="Central_Park" data-name="Central Park" x="364.1" y="0.5" width="40.4" height="40.4" style="fill: #90b2d0;stroke: #e1e1e1;stroke-miterlimit: 10" />
         <rect id="East_Colfax" data-name="East Colfax" x="364.1" y="40.9" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" />
-        <rect id="Lowry_Field" data-name="Lowry Field" x="364.1" y="81.3" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" />
+        <rect id="Lowry_Field" data-name="Lowry Field" x="364.1" y="81.3" width="40.4" height="40.4" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" style="fill: #f5f5f6;stroke: #e1e1e1;stroke-miterlimit: 10" onmousemove="style='fill: #f5f5f6;opacity:50%'; showTooltip(evt, buildTable('Lowry Field','1856','1820','1440','1371'));" onmouseout="hideTooltip(); style='fill: #f5f5f6;opacity:100%;stroke: #e1e1e1;stroke-miterlimit: 10'" />
         <text transform="translate(296.01 24.43)" style="font-size: 8.5px;font-family: CubScout-Light, CubScout;font-weight: 300">North <tspan x="20.55" y="0" style="letter-spacing: -0.01999080882352941em">P</tspan>
             <tspan x="25.13" y="0">ark Hill</tspan>
         </text>
