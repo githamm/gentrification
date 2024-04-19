@@ -43,3 +43,30 @@ B19013_001E,tract,TRACTCE,nbhd_name
 41250,004403,004403,"East Colfax"
 27086,004404,004404,"East Colfax"
 67358,004405,004405,"Lowry Field"
+neighborhoods  tracts       
+CREATE TABLE neighborhoods(
+  "STATEFP00" TEXT,
+  "COUNTYFP00" TEXT,
+  "TRACTCE00" TEXT,
+  "CTIDFP00" TEXT,
+  "TRACTCE" TEXT,
+  "NAME00" TEXT,
+  "NAMELSAD00" TEXT,
+  "MTFCC00" TEXT,
+  "FUNCSTAT00" TEXT,
+  "ALAND00" TEXT,
+  "AWATER00" TEXT,
+  "INTPTLAT00" TEXT,
+  "INTPTLON00" TEXT,
+  "nbhd_id" TEXT,
+  "nbhd_name" TEXT,
+  "notes" TEXT,
+  "typology" TEXT
+);
+CREATE TABLE tracts(
+  "NAME" TEXT,
+  "B19013_001E" TEXT,
+  "state" TEXT,
+  "county" TEXT,
+  "tract" TEXT
+);
