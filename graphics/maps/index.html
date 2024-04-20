@@ -7,32 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Denver Neighborhood Demographics | The Denver Post</title>
     <link rel="shortcut icon" href="https://extras.mnginteractive.com/live/media/favIcon/dpo/favicon.ico" type="image/x-icon" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" /> -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
     <script src="https://extras.denverpost.com/foundation/js/vendor/modernizr.js"></script>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-    <!-- <script src="https://extras.denverpost.com/app/homicide-report/js/leaflet-grouped-layer-control.js"></script> -->
     <script src="leaflet-grouped-layer-control.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
     html {
         font-family: monospace;
     }
 
-    #container {
-        /*height: 600px;
-        width: 893px;
-        margin: 0 auto;*/
-    }
-
     #map {
         height: 400px;
         width: 100%;
-        /*width: 893px;
-        height: 600px;
-        margin: 0 auto;*/
         border: 2px solid silver;
     }
 
@@ -47,65 +34,6 @@
         font-family: 'Roboto', sans-serif;
     }
 
-    /*.leaflet-popup-content {
-        max-width:350px;
-    }*/
-
-    /*#content-container {
-        padding: 15px;
-    }*/
-    .legend-text {
-        text-transform: uppercase;
-        font-size: .9rem;
-        font-weight: bold;
-        color: #737373;
-        text-align: center;
-        margin-bottom: 3px;
-    }
-
-    .legend-container {
-        width: 100%;
-        clear: both;
-    }
-
-    .legend-item {
-        float: left;
-    }
-
-    .instructions {
-        text-align: center;
-        font-size: .9rem;
-        font-style: italic;
-        color: #ff5959;
-        opacity: .8;
-        margin: -3px 0 15px 0;
-        line-height: 17px;
-    }
-
-    /*.tooltip-header {
-        font-size: 1.3em;
-        font-weight: 700;
-        margin-bottom: 0;
-        text-align: left;
-        text-transform: uppercase;
-        padding-left: 13px;
-        color: #7F462C;
-    }*/
-
-    /*.popup-text {
-        margin-bottom: -17px !important;
-        color: rgba(0, 0, 0, .8);
-    }*/
-
-    /*.popup-header {
-        font-weight: 700;
-        font-size: 1.1em;
-        letter-spacing: .5px;
-        /*text-transform: uppercase;
-        color: #000;
-        margin-bottom: 0;
-    }*/
-
     .note {
         font-style: italic;
         margin-top: 10px !important;
@@ -115,7 +43,6 @@
 
     .legend {
         width: 60px;
-        /*height: 30px;*/
         opacity: .6;
         float: left;
     }
@@ -128,7 +55,6 @@
         letter-spacing: 1px;
         line-height: 22px;
         text-transform: uppercase;
-        /*        color: #737373;*/
         color: #000;
     }
 
@@ -138,16 +64,6 @@
 
     #layer-control {
         margin-top: 2px;
-    }
-
-    /*input.leaflet-control-layers-selector {
-        font-family: monospace;
-        color: red !important;
-        text-transform: none;
-    }*/
-
-    a.leaflet-control-layers-toggle {
-        background-color: red;
     }
 
     .leaflet-control-layers .leaflet-control-layers-list {
@@ -188,7 +104,7 @@
         margin: 10px;
     }
 
-    h4 {
+    .tooltip-table-title {
         font-weight: 700;
         font-size: 1.3em;
         text-transform: uppercase;
@@ -204,40 +120,11 @@
         font-family: monospace;
     }
 
-    table thead {
-        background-color: #fafafa;
-        padding-bottom: 0;
-    }
-
-    table thead th {
-        border-bottom: 2px solid silver;
-        padding-bottom: 0;
-        color: rgba(0, 0, 0, .4);
-        font-weight: normal;
-        text-transform: uppercase;
-    }
-
-    table thead th tbody td {
-        /*        font-size: 1.05em;*/
-    }
-
     table tr {
         border-bottom: 1px solid silver;
         border-top: 1px solid #fafafa;
         border-left: 1px solid #fafafa;
         border-right: 1px solid #fafafa;
-    }
-
-    table tr:last-child {
-        border: 1px solid #fafafa;
-    }
-
-    table tbody tr:nth-child(2n) {
-        background-color: #fafafa;
-    }
-
-    table tbody tr:nth-child(1n) {
-        background-color: #fafafa;
     }
 
     th {
@@ -265,53 +152,6 @@
         margin-left: 5px;
     }
 
-    .difference {
-        margin: -13px 0 -5px 0 !important;
-        font-size: 1.08rem;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .diff-precinct {
-        font-weight: normal;
-        font-size: 1.2em;
-        text-transform: uppercase;
-        /* color: #8e1024; */
-        margin-bottom: -10px;
-    }
-
-    /* .legend-container {
-        width: auto;
-        float: right;
-        margin-top: 2px;
-    }*/
-
-    .legend-box {
-        width: 40px;
-        height: 15px;
-        border: 1px solid #aaa;
-        float: left;
-    }
-
-    .legend-description {
-        font-style: italic;
-        font-size: .72rem;
-        text-transform: uppercase;
-        text-align: center;
-        margin-bottom: 3px;
-    }
-
-    .subtitle {
-        font-size: .75rem;
-        font-style: italic;
-        margin: 0 !important;
-    }
-
-    .sub-data {
-        color: rgba(0, 0, 0, .4);
-        font-style: italic;
-    }
-
     .green {
         color: green;
     }
@@ -331,19 +171,6 @@
         margin-bottom: 0;
     }
 
-    .legend {
-        line-height: 18px;
-        color: #555;
-    }
-
-    .legend i {
-        width: 18px;
-        height: 18px;
-        float: left;
-        margin-right: 8px;
-        opacity: 0.7;
-    }
-
     .info {
         padding: 6px 8px;
         font: 14px/16px Arial, Helvetica, sans-serif;
@@ -355,11 +182,6 @@
         width: 180px;
     }
 
-    .info h4 {
-        margin: 0 0 5px;
-        color: #777;
-    }
-
     .legend-square {
         display: inline-block;
         height: 15px;
@@ -367,7 +189,8 @@
         margin-right: 1px;
     }
 
-    .intro-hed, .intro {
+    .intro-hed,
+    .intro {
         font-family: Helvetica, sans-serif;
     }
 
@@ -385,12 +208,10 @@
     <div id="container">
         <h2 class="intro-hed">Demographic shifts in Denver's neighborhoods near Colfax</h2>
         <p class="intro">Metro Denver has seen significant population growth since 2012, bringing rapid changes that have altered the makeup of some neighborhoods as redevelopment has unfolded. That's especially true along and near Colfax Avenue, one of the city's major east-west streets. Click the map to explore some of those demographic shifts. <em>Use radio buttons to toggle maps; click neighborhood for details.</em></p>
-        <!-- <p style="margin-bottom: -5px;font-weight:bold;text-transform: uppercase;font-size:.9rem;color:#b2182b">Choose a map</p> -->
         <fieldset class="fieldset-box">
             <legend class="fieldset-label">Choose a map</legend>
             <div id="layer-control"></div>
         </fieldset>
-        <!-- <div class="legend-container"><div class="legend-box" style="background-color:#ffffcc;opacity:.75"><25%</div><div class="legend-box" style="background-color:#a1dab4;opacity:.75"></div><div class="legend-box" style="background-color:#41b6c4;opacity:.75"></div><div class="legend-box" style="background-color:#225ea8;opacity:.75">>75%</div></div> -->
         <div id="map"></div>
         <p class="source">Source: 2012, 2017, 2022 American Community Survey 5-year samples / Kevin Hamm, The Denver Post</p>
     </div>
@@ -407,10 +228,10 @@
             subdomains: 'abcd',
             maxZoom: 20
         }),
-        Two: L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        Two: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
-            maxZoom: 19
+            maxZoom: 20
         })
     };
 
@@ -427,13 +248,13 @@
         }
     };
 
+    // Radio buttons for maps
     var options = {
-        // Make the "Landmarks" group exclusive (use radio inputs)
+        // Make the group exclusive (use radio inputs)
         exclusiveGroups: [""]
         // Show a checkbox next to non-exclusive group labels for toggling all
         //groupCheckboxes: true
     };
-
 
     var map = L.map('map', {
         //zoomSnap: .15,
@@ -441,30 +262,14 @@
         //zoom: 12.5,
         minZoom: 11,
         maxZoom: 17,
-        layers: [basemaps.One, neighborhoodMap, rentMap],
+        layers: [basemaps.Two, neighborhoodMap, rentMap],
         preferCanvas: true
-    }); //.addLayer(cartoTiles);
+    });
 
-    // const capitolIcon = L.Icon.extend({
-    //     options: {
-    //         shadowUrl: 'capitol_icon.svg',
-    //         iconSize: [38, 95],
-    //         shadowSize: [50, 64],
-    //         iconAnchor: [22, 94],
-    //         shadowAnchor: [4, 62],
-    //         popupAnchor: [-3, -76]
-    //     }
-    // });
-
+    // Add icon for Capitol
     var capitolIcon = L.icon({
         iconUrl: 'capitol_icon.png',
-        //shadowUrl: 'leaf-shadow.png',
-
-        iconSize: [18, 18], // size of the icon
-        //shadowSize: [50, 64], // size of the shadow
-        //iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-        //shadowAnchor: [4, 62], // the same for the shadow
-        //popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize: [18, 18]
     });
 
     L.marker([39.7392192915455, -104.98480893420299], { icon: capitolIcon }).addTo(map);
@@ -496,20 +301,6 @@
                 var fillColor;
                 var borderColor;
 
-                // ['#ffffcc','#a1dab4','#41b6c4','#225ea8'] - yellow to blue sequential
-                // ['#edf8fb','#b3cde3','#8c96c6','#88419d'] - purple sequential
-                // ['#e66101','#fdb863','#b2abd2','#5e3c99'] - purple to orange diverging
-                // if (raceChange > 20) fillColor = '#225ea8';
-                // else if (raceChange > 10) fillColor = '#41b6c4';
-                // else if (raceChange > 0) fillColor = '#a1dab4';
-                // else if (raceChange < 0) fillColor = '#ffffcc';
-                // return {
-                //     color: '#000',
-                //     weight: 3,
-                //     fillColor: fillColor,
-                //     fillOpacity: .6
-                // };
-                // ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#993404','#662506']
                 function getColor(d) {
                     return d > 24 ? '#662506' :
                         d > 16 ? '#cc4c02' :
@@ -553,7 +344,7 @@
                     changeColor3 = 'red'
                 } else changeColor3 = 'green';
 
-                var tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><th></th><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td class="row-header">Total<br>pop.</td><td>' + first2012.toLocaleString() + '</td><td>' + first2017.toLocaleString() + '</td><td>' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + Math.round(firstChange * 10) / 10 + '%</td></tr><tr><td class="row-header">White*<br>pop.</td><td>' + second2012.toLocaleString() + '</td><td>' + second2017.toLocaleString() + '</td><td>' + second2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor2 + '">' + Math.round(secondChange * 10) / 10 + '%</td></tr><tr><td class="row-header">Pct.<br>White</td><td>' + third2012 + '%</td><td>' + third2017 + '%</td><td>' + third2022 + '%</td><td class="highlight-cell" style="color:' + changeColor3 + '">' + Math.round(thirdChange * 10) / 10 + '%</td></tr></table><p class="note"><span style="vertical-align:super">*</span>Not Hispanic or Latino, White alone</p>'
+                var tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><th></th><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td class="row-header">Total<br>pop.</td><td>' + first2012.toLocaleString() + '</td><td>' + first2017.toLocaleString() + '</td><td>' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + Math.round(firstChange * 10) / 10 + '%</td></tr><tr><td class="row-header">White*<br>pop.</td><td>' + second2012.toLocaleString() + '</td><td>' + second2017.toLocaleString() + '</td><td>' + second2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor2 + '">' + Math.round(secondChange * 10) / 10 + '%</td></tr><tr><td class="row-header">Pct.<br>White</td><td>' + third2012 + '%</td><td>' + third2017 + '%</td><td>' + third2022 + '%</td><td class="highlight-cell" style="color:' + changeColor3 + '">' + Math.round(thirdChange * 10) / 10 + '%</td></tr></table><p class="note"><span style="vertical-align:super">*</span>Not Hispanic or Latino, White alone</p>'
                 layer.bindPopup(
                     tooltipText
                 )
@@ -579,20 +370,6 @@
                 var fillColor;
                 var borderColor;
 
-                // ['#ffffcc','#a1dab4','#41b6c4','#225ea8'] - yellow to blue sequential
-                // ['#edf8fb','#b3cde3','#8c96c6','#88419d'] - purple sequential
-                // ['#e66101','#fdb863','#b2abd2','#5e3c99'] - purple to orange diverging
-                // if (raceChange > 20) fillColor = '#225ea8';
-                // else if (raceChange > 10) fillColor = '#41b6c4';
-                // else if (raceChange > 0) fillColor = '#a1dab4';
-                // else if (raceChange < 0) fillColor = '#ffffcc';
-                // return {
-                //     color: '#000',
-                //     weight: 3,
-                //     fillColor: fillColor,
-                //     fillOpacity: .6
-                // };
-                // ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#993404','#662506']
                 function getColor(d) {
                     return d > 24 ? '#662506' :
                         d > 16 ? '#cc4c02' :
@@ -638,8 +415,8 @@
 
                 var tooltipText;
                 if (feature.properties.nbhd_name == 'Auraria') {
-                    tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><td>No data</td></tr></table>'
-                } else  tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><th></th><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td class="row-header">Total<br>adults</td><td>' + first2012.toLocaleString() + '</td><td>' + first2017.toLocaleString() + '</td><td>' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + Math.round(firstChange * 10) / 10 + '%</td></tr><tr><td class="row-header">Adults w/<br>bachelor\'s<br>degree</td><td>' + second2012.toLocaleString() + '</td><td>' + second2017.toLocaleString() + '</td><td>' + second2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor2 + '">' + Math.round(secondChange * 10) / 10 + '%</td></tr><tr><td class="row-header">Pct. w/<br>bachelor\'s<br>degree</td><td>' + third2012 + '%</td><td>' + third2017 + '%</td><td>' + third2022 + '%</td><td class="highlight-cell" style="color:' + changeColor3 + '">' + Math.round(thirdChange * 10) / 10 + '%</td></tr></table>'
+                    tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><td>No data</td></tr></table>'
+                } else tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><th></th><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td class="row-header">Total<br>adults</td><td>' + first2012.toLocaleString() + '</td><td>' + first2017.toLocaleString() + '</td><td>' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + Math.round(firstChange * 10) / 10 + '%</td></tr><tr><td class="row-header">Adults w/<br>bachelor\'s<br>degree</td><td>' + second2012.toLocaleString() + '</td><td>' + second2017.toLocaleString() + '</td><td>' + second2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor2 + '">' + Math.round(secondChange * 10) / 10 + '%</td></tr><tr><td class="row-header">Pct. w/<br>bachelor\'s<br>degree</td><td>' + third2012 + '%</td><td>' + third2017 + '%</td><td>' + third2022 + '%</td><td class="highlight-cell" style="color:' + changeColor3 + '">' + Math.round(thirdChange * 10) / 10 + '%</td></tr></table>'
                 layer.bindPopup(
                     tooltipText
                 )
@@ -665,21 +442,6 @@
                 var fillColor;
                 var borderColor;
 
-                // ['#ffffcc','#a1dab4','#41b6c4','#225ea8'] - yellow to blue sequential
-                // ['#edf8fb','#b3cde3','#8c96c6','#88419d'] - purple sequential
-                // ['#e66101','#fdb863','#b2abd2','#5e3c99'] - purple to orange diverging
-                // if (rentChange > 60) fillColor = '#225ea8';
-                // else if (rentChange > 40) fillColor = '#41b6c4';
-                // else if (rentChange > 20) fillColor = '#a1dab4';
-                // else if (rentChange > 0) fillColor = '#ffffcc';
-                // return {
-                //     color: '#000',
-                //     weight: 3,
-                //     fillColor: fillColor,
-                //     fillOpacity: .6
-                // };
-
-                // ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#993404','#662506']
                 function getColor(d) {
                     return d > 80 ? '#662506' :
                         d > 60 ? '#cc4c02' :
@@ -711,8 +473,8 @@
 
                 var tooltipText;
                 if (feature.properties.nbhd_name == 'Auraria') {
-                    tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><th colspan=3">MEDIAN RENT</th></tr><tr><td>No data</td></tr></table>'
-                } else tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><th colspan=3">MEDIAN RENT</th></tr><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td>$' + first2012.toLocaleString() + '</td><td>$' + first2017.toLocaleString() + '</td><td>$' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + firstChange.toLocaleString() + '%</td></tr></table>'
+                    tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><th colspan=3">MEDIAN RENT</th></tr><tr><td>No data</td></tr></table>'
+                } else tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><th colspan=3">MEDIAN RENT</th></tr><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td>$' + first2012.toLocaleString() + '</td><td>$' + first2017.toLocaleString() + '</td><td>$' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + firstChange.toLocaleString() + '%</td></tr></table><p class="note">All figures in 2022 dollars</p>'
                 layer.bindPopup(
                     tooltipText
                 )
@@ -762,20 +524,6 @@
                 var fillColor;
                 var borderColor;
 
-                // ['#ffffcc','#a1dab4','#41b6c4','#225ea8'] - yellow to blue sequential
-                // ['#edf8fb','#b3cde3','#8c96c6','#88419d'] - purple sequential
-                // ['#e66101','#fdb863','#b2abd2','#5e3c99'] - purple to orange diverging
-                // if (incomeChange > 99) fillColor = '#225ea8';
-                // else if (incomeChange > 66) fillColor = '#41b6c4';
-                // else if (incomeChange > 33) fillColor = '#a1dab4';
-                // else if (incomeChange > 0) fillColor = '#ffffcc';
-                // return {
-                //     color: '#000',
-                //     weight: 3,
-                //     fillColor: fillColor,
-                //     fillOpacity: .6
-                // };
-                // ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#993404','#662506']
                 function getColor(d) {
                     return d > 120 ? '#662506' :
                         d > 90 ? '#cc4c02' :
@@ -807,13 +555,9 @@
 
                 var tooltipText;
                 if (feature.properties.nbhd_name == 'Auraria') {
-                    tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><th colspan="3">MEDIAN HOUSEHOLD INCOME</th></tr><tr><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td>$82,386</td><td>No data</td><td>$148,958</td><td class="highlight-cell" style="color:green">80.8%</td></tr></table>'
-                } else
-
-                    tooltipText = '<h4>' + feature.properties.nbhd_name + '</h4><table><tr><th colspan=3">MEDIAN HOUSEHOLD INCOME</th></tr><tr><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td>$' + first2012.toLocaleString() + '</td><td>$' + first2017.toLocaleString() + '</td><td>$' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + firstChange.toLocaleString() + '%</td></tr></table>'
-                layer.bindPopup(
-                    tooltipText
-                )
+                    tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><th colspan="3">MEDIAN HOUSEHOLD INCOME</th></tr><tr><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td>$82,386</td><td>No data</td><td>$148,958</td><td class="highlight-cell" style="color:green">80.8%</td></tr></table><p class="note">All figures in 2022 dollars</p>'
+                } else tooltipText = '<h4 class="tooltip-table-title">' + feature.properties.nbhd_name + '</h4><table><tr><th colspan=3">MEDIAN HOUSEHOLD INCOME</th></tr><tr><th>2012</th><th>2017</th><th>2022</th><th class="highlight-cell">Change<br>2012-22</th></tr><tr><td>$' + first2012.toLocaleString() + '</td><td>$' + first2017.toLocaleString() + '</td><td>$' + first2022.toLocaleString() + '</td><td class="highlight-cell" style="color:' + changeColor1 + '">' + firstChange.toLocaleString() + '%</td></tr></table><p class="note">All figures in 2022 dollars</p>';
+                layer.bindPopup(tooltipText);
                 layer.on('mouseover', function() {
                     this.setStyle({
                         fillOpacity: 1
@@ -828,95 +572,15 @@
         }).addTo(incomeMap);
     });
 
-    // $.getJSON("denver-asthma-data.geojson", function(data) {
-    //     L.geoJson(data, {
-    //         style: function(feature) {
-    //             var rate2013 = feature.properties.rate2013;
-    //             var fillColor;
-    //             var fillOpacity;
-
-    //             if (rate2013 > 1800) fillColor = '#b2182b';
-    //             else if (rate2013 > 1200) fillColor = '#d6604d';
-    //             else if (rate2013 > 637.8) fillColor = '#f4a582';
-    //             else if (rate2013 > 0) fillColor = '#4393c3';
-    //             return {
-    //                 color: '#000',
-    //                 weight: 3,
-    //                 fillColor: fillColor,
-    //                 fillOpacity: .75
-    //             };
-    //         },
-    //         onEachFeature: function(feature, layer) {
-    //             var stateAvgDiff2006 = Math.round(((feature.properties.rate2006 - feature.properties.rateCO2006) / feature.properties.rateCO2006) * 100);
-    //             var stateAvgDiff2013 = Math.round(((feature.properties.rate2013 - feature.properties.rateCO2013) / feature.properties.rateCO2013) * 100);
-    //             var rateChange = Math.round(((feature.properties.rate2013 - feature.properties.rate2006) / feature.properties.rate2006) * 100);
-
-    //             var changeColor;
-    //             if (rateChange < 0) {
-    //                 changeColor = 'green'
-    //             } else changeColor = 'red';
-
-    //             var tooltipText;
-    //             if (feature.properties.rate2006 == null || feature.properties.rate2013 == null) {
-    //                 tooltipText = 'No data'
-    //             } else tooltipText = '<h4>' + feature.properties.neighborhood + '</h4><p class="subtitle">' + feature.properties.TRACT_NAME + '</p><table><thead><tr><th></th><th>2006</th><th>2013</th><th>Change</th></tr></thead><tr><td>Rate*</td><td>' + feature.properties.rate2006 + '</td><td>' + feature.properties.rate2013 + '</td><td style="color:' + changeColor + '">' + rateChange + '%</td></tr><tr><td>Difference from<br>state average</td><td>' + stateAvgDiff2006 + '%<br><span class="sub-data">' + feature.properties.rateCO2006 + '</td><td>' + stateAvgDiff2013 + '%<br><span class="sub-data">' + feature.properties.rateCO2013 + '</td><td></td><tr><td colspan="4" style="text-align:right;font-style:italic">*Hospitalizations per 100,000 people</td></tr></table>';
-
-    //             layer.bindPopup(
-    //                 tooltipText
-    //             )
-    //         }
-    //     }).addTo(asthma2013);
-    // });
-
-    // $.getJSON("denver-asthma-data.geojson", function(data) {
-    //     L.geoJson(data, {
-    //         style: function(feature) {
-    //             var rateChange = feature.properties.change;
-    //             var fillColor;
-    //             var fillOpacity;
-
-    //             if (rateChange > 50) fillColor = '#b2182b';
-    //             else if (rateChange > 25) fillColor = '#d6604d';
-    //             else if (rateChange > 0) fillColor = '#f4a582';
-    //             else if (rateChange < 0) fillColor = '#4393c3';
-    //             return {
-    //                 color: '#000',
-    //                 weight: 3,
-    //                 fillColor: fillColor,
-    //                 fillOpacity: .75
-    //             };
-    //         },
-    //         onEachFeature: function(feature, layer) {
-    //             var stateAvgDiff2006 = Math.round(((feature.properties.rate2006 - feature.properties.rateCO2006) / feature.properties.rateCO2006) * 100);
-    //             var stateAvgDiff2013 = Math.round(((feature.properties.rate2013 - feature.properties.rateCO2013) / feature.properties.rateCO2013) * 100);
-    //             var rateChange = Math.round(((feature.properties.rate2013 - feature.properties.rate2006) / feature.properties.rate2006) * 100);
-
-    //             var changeColor;
-    //             if (rateChange < 0) {
-    //                 changeColor = 'green'
-    //             } else changeColor = 'red';
-
-    //             var tooltipText;
-    //             if (feature.properties.rate2006 == null || feature.properties.rate2013 == null) {
-    //                 tooltipText = 'No data'
-    //             } else tooltipText = '<h4>' + feature.properties.neighborhood + '</h4><p class="subtitle">' + feature.properties.TRACT_NAME + '</p><table><thead><tr><th></th><th>2006</th><th>2013</th><th>Change</th></tr></thead><tr><td>Rate*</td><td>' + feature.properties.rate2006 + '</td><td>' + feature.properties.rate2013 + '</td><td style="color:' + changeColor + '">' + rateChange + '%</td></tr><tr><td>Difference from<br>state average</td><td>' + stateAvgDiff2006 + '%<br><span class="sub-data">' + feature.properties.rateCO2006 + '</td><td>' + stateAvgDiff2013 + '%<br><span class="sub-data">' + feature.properties.rateCO2013 + '</td><td></td><tr><td colspan="4" style="text-align:right;font-style:italic">*Hospitalizations per 100,000 people</td></tr></table>';
-
-    //             layer.bindPopup(
-    //                 tooltipText
-    //             )
-    //         }
-    //     }).addTo(asthmaChange);
-    // });
-
     var layerControl = L.control.groupedLayers(basemaps, groupedOverlays, options);
     map.addControl(layerControl);
 
-    // Call the getContainer routine.
+    // Call the getContainer routine
     var htmlObject = layerControl.getContainer();
-    // Get the desired parent node.
+    // Get the desired parent node
     var a = document.getElementById('layer-control');
 
-    // Finally append that node to the new parent.
+    // Append that node to the new parent
     function setParent(el, newParent) {
         newParent.appendChild(el);
     }
