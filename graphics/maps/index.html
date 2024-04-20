@@ -172,6 +172,7 @@
 
     .leaflet-control-layers label {
         display: table;
+        margin-bottom: 3px;
     }
 
     .leaflet-control-layers-base {
@@ -327,7 +328,7 @@
         text-transform: uppercase;
         font-weight: bold;
         font-size: 1.25em;
-        margin-bottom: -5px;
+        margin-bottom: 0;
     }
 
     .legend {
@@ -365,13 +366,25 @@
         width: 15px;
         margin-right: 1px;
     }
+
+    .intro-hed, .intro {
+        font-family: Helvetica, sans-serif;
+    }
+
+    .intro {
+        line-height: 1.3;
+    }
+
+    .intro-hed {
+        margin-bottom: -10px;
+    }
     </style>
 </head>
 
 <body>
     <div id="container">
-        <h2>A hed here and here and here</h2>
-        <p>Chatter here and here and here ... <em>Use radio buttons to toggle maps; click neighborhood for details.</em></p>
+        <h2 class="intro-hed">Demographic shifts in Denver's neighborhoods near Colfax</h2>
+        <p class="intro">Metro Denver has seen significant population growth since 2012, bringing rapid changes that have altered the makeup of some neighborhoods as redevelopment has unfolded. That's especially true along and near Colfax Avenue, one of the city's major east-west streets. Click the map to explore some of those demographic shifts. <em>Use radio buttons to toggle maps; click neighborhood for details.</em></p>
         <!-- <p style="margin-bottom: -5px;font-weight:bold;text-transform: uppercase;font-size:.9rem;color:#b2182b">Choose a map</p> -->
         <fieldset class="fieldset-box">
             <legend class="fieldset-label">Choose a map</legend>
@@ -379,8 +392,8 @@
         </fieldset>
         <!-- <div class="legend-container"><div class="legend-box" style="background-color:#ffffcc;opacity:.75"><25%</div><div class="legend-box" style="background-color:#a1dab4;opacity:.75"></div><div class="legend-box" style="background-color:#41b6c4;opacity:.75"></div><div class="legend-box" style="background-color:#225ea8;opacity:.75">>75%</div></div> -->
         <div id="map"></div>
-        <p class="source">Source: U.S. Census American Community Survey / Kevin Hamm, The Denver Post</p>
-    </div> <!-- End "container" -->
+        <p class="source">Source: 2012, 2017, 2022 American Community Survey 5-year samples / Kevin Hamm, The Denver Post</p>
+    </div>
     <script>
     var rentMap = new L.LayerGroup();
     var incomeMap = new L.LayerGroup();
